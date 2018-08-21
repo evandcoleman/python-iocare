@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: bondpy
+Version: 0.0.1
+Summary: A Python library for the BOND API with Python 3+
+Home-page: UNKNOWN
+Author: Evan Coleman
+Author-email: oss@edc.me
+License: MIT
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
