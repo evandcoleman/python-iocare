@@ -28,9 +28,10 @@ SESSION = BondSession()
 
 class BondApi:
 
-    def __init__(self, email, password):
+    def __init__(self, email, password, host):
         SESSION.email = email
         SESSION.password = password
+        SESSION.host
         self.seq = 0
 
         if email is None or password is None:
@@ -98,7 +99,10 @@ class BondApi:
 
     def device_control(self, devId, commandId):
         self.seq += 1
-        url = "https://" + SESSION.bondId + ":4433/api/v1/device/" + str(int(devId) - 1) + "/device_property/" + devId + "/device_property_command/" + commandId + "/run"
+        if SESSION.host is None:
+            url = "https://" + SESSION.bondId + ":4433/api/v1/device/" + str(int(devId) - 1) + "/device_property/" + devId + "/device_property_command/" + commandId + "/run"
+        else:
+            url = "https://" + SESSION.host + ":4433/api/v1/device/" + str(int(devId) - 1) + "/device_property/" + devId + "/device_property_command/" + commandId + "/run"
         headers = {'X-Token': self.session['token'], 'X-Sequence': str(self.seq), 'X-BondDate': datetime.utcnow().isoformat().split('.')[0] + 'Z'}
         requests.get(url, headers=headers, verify=False)
 
