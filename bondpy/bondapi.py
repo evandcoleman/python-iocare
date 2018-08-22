@@ -18,6 +18,7 @@ class BondSession:
 
     email = ''
     password = ''
+    host = None
     key = ''
     token = ''
     devices = []
