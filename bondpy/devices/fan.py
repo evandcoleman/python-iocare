@@ -11,7 +11,7 @@ class BondFanDevice(BondDevice):
         return list(filter(lambda x: x.name.startswith('Speed'), self.commands))
 
     def set_speed(self, speed):
-        self.api.device_control(self.obj_id, speed.command_id)
+        self.api.device_control(self.obj_id, speed.command_id())
 
     def reverse(self):
         self.api.device_control(self.obj_id, list(filter(lambda x: x.name == 'Reverse', self.commands))[0].command_id())
