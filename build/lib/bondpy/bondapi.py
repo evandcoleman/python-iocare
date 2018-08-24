@@ -3,6 +3,7 @@ import logging
 import requests
 import time
 import collections
+from datetime import datetime
 
 from bondpy.devices.factory import get_bond_device
 
@@ -104,7 +105,7 @@ class BondApi:
             url = "https://" + SESSION.bondId + ":4433/api/v1/device/" + str(int(devId) - 1) + "/device_property/" + devId + "/device_property_command/" + commandId + "/run"
         else:
             url = "https://" + SESSION.host + ":4433/api/v1/device/" + str(int(devId) - 1) + "/device_property/" + devId + "/device_property_command/" + commandId + "/run"
-        headers = {'X-Token': self.session['token'], 'X-Sequence': str(self.seq), 'X-BondDate': datetime.utcnow().isoformat().split('.')[0] + 'Z'}
+        headers = {'X-Token': SESSION.token, 'X-Sequence': str(self.seq), 'X-BondDate': datetime.utcnow().isoformat().split('.')[0] + 'Z'}
         requests.get(url, headers=headers, verify=False)
 
 

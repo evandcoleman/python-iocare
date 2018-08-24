@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="bondpy",
-    version="0.1.9",
+    version="0.1.10",
     author="Evan Coleman",
     author_email="oss@edc.me",
     description="A Python library for the BOND API with Python 3+",
