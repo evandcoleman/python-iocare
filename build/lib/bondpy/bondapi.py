@@ -33,7 +33,7 @@ class BondApi:
     def __init__(self, email, password, host):
         SESSION.email = email
         SESSION.password = password
-        SESSION.host
+        SESSION.host = host
         self.seq = 0
 
         if email is None or password is None:
