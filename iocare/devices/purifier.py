@@ -35,9 +35,11 @@ class Purifier(object):
             self.quality['pollen_mode'] = q['pollenMode']
         if len(iaq) > 0:
             q = iaq[0]
-            self.quality['dustpm10'] = q['dustpm10']
-            self.quality['co2'] = q['co2']
-            self.quality['inairquality'] = q['inairquality']
+            self.quality['particulate_matter_2_5'] = q['dustpm25']
+            self.quality['particulate_matter_10'] = q['dustpm10']
+            self.quality['carbon_dioxide'] = q['co2']
+            self.quality['volatile_organic_compounds'] = q['vocs']
+            self.quality['air_quality_index'] = q['inairquality']
 
     def set_power(self, on):
         self.api.control(self, '0001', '1' if on else '0')
