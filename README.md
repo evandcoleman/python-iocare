@@ -1,1 +1,1 @@
-A python interface for the BOND API
+A python interface for the IOCare API utilized by Coway air purifiers
