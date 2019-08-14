@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="python-iocare",
-    version="0.1.0",
+    version="0.1.1",
     author="Evan Coleman",
     author_email="oss@edc.me",
     description="A Python library for the IOCare API utilized by Coway air purifiers",

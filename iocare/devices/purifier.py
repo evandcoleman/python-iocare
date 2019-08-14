@@ -27,16 +27,17 @@ class Purifier(object):
                 'change_months': f['changeCycle']
             })
         self.filters = fs
+        self.quality = {}
         if len(quality) > 0:
             q = quality[0]
-            self.dust_pollution = q['dustPollution']
-            self.air_volume = q['airVolume']
-            self.pollen_mode = q['pollenMode']
+            self.quality['dust_pollution'] = q['dustPollution']
+            self.quality['air_volume'] = q['airVolume']
+            self.quality['pollen_mode'] = q['pollenMode']
         if len(iaq) > 0:
             q = iaq[0]
-            self.dustpm10 = q['dustpm10']
-            self.co2 = q['co2']
-            self.inairquality = q['inairquality']
+            self.quality['dustpm10'] = q['dustpm10']
+            self.quality['co2'] = q['co2']
+            self.quality['inairquality'] = q['inairquality']
 
     def set_power(self, on):
         self.api.control(self, '0001', '1' if on else '0')
