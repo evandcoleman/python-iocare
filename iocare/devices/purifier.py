@@ -42,17 +42,21 @@ class Purifier(object):
             self.quality['air_quality_index'] = q['inairquality']
 
     def set_power(self, on):
+        self.is_on = on
         self.api.control(self, '0001', '1' if on else '0')
         self.refresh()
 
     def set_auto(self, auto):
+        self.is_auto = auto
         self.api.control(self, '0002', '1' if auto else '2')
         self.refresh()
 
     def set_fan_speed(self, speed):
+        self.fan_speed = speed
         self.api.control(self, '0003', speed)
         self.refresh()
 
     def set_light(self, on):
+        self.is_light_on = on
         self.api.control(self, '0007', '2' if on else '0')
         self.refresh()
