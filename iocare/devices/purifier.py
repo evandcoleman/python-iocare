@@ -15,6 +15,7 @@ class Purifier(object):
         control_status = self.api.control_status(self)
         self.is_on = control_status['0001'] == '1'
         self.is_auto = control_status['0002'] == '1'
+        self.is_auto_eco = control_status['0002'] == '6'        
         self.is_night = control_status['0002'] == '2'
         self.fan_speed = control_status['0003']
         self.is_light_on = control_status['0007'] == '2'
