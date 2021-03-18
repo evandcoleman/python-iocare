@@ -53,11 +53,6 @@ class Purifier(object):
         self.api.control(self, '0002', '1')
         self.refresh()
  
-    def set_auto_eco_mode(self):
-        self.is_auto_eco = True
-        self.api.control(self, '0002', '6')
-        self.refresh()
-
     def set_night_mode(self):
         self.is_night = True
         self.api.control(self, '0002', '2')
