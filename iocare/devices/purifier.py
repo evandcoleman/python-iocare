@@ -15,10 +15,12 @@ class Purifier(object):
         control_status = self.api.control_status(self)
         self.is_on = control_status['0001'] == '1'
         self.is_auto = control_status['0002'] == '1'
-        self.is_auto_eco = control_status['0002'] == '6'        
+        self.is_auto_eco = control_status['0002'] == '6'
         self.is_night = control_status['0002'] == '2'
         self.fan_speed = control_status['0003']
         self.is_light_on = control_status['0007'] == '2'
+        self.timer = control_status['0008']
+        self.is_timer_on = control_status['0008'] > '0'
         filters, quality, iaq = self.api.quality_status(self)
         fs = []
         for f in filters:
@@ -52,7 +54,7 @@ class Purifier(object):
         self.is_auto = True
         self.api.control(self, '0002', '1')
         self.refresh()
- 
+
     def set_night_mode(self):
         self.is_night = True
         self.api.control(self, '0002', '2')
@@ -68,4 +70,9 @@ class Purifier(object):
     def set_light(self, on):
         self.is_light_on = on
         self.api.control(self, '0007', '2' if on else '0')
+        self.refresh()
+
+    def set_timer(self, time):
+        self.timer = time
+        self.api.control(self, '0008', time)
         self.refresh()
