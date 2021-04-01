@@ -19,8 +19,8 @@ class Purifier(object):
         self.is_night = control_status['0002'] == '2'
         self.fan_speed = control_status['0003']
         self.is_light_on = control_status['0007'] == '2'
-        self.timer_left = control_status['0008']
-        self.timer_set = control_status['offTimerData']
+        self.timer = control_status['offTimerData']
+        self.timer_remaining = control_status['0008']
         self.is_timer_on = control_status['0008'] > '0'
         filters, quality, iaq = self.api.quality_status(self)
         fs = []
@@ -74,6 +74,6 @@ class Purifier(object):
         self.refresh()
 
     def set_timer(self, time):
-        self.timer_set = time
+        self.timer = time
         self.api.control(self, '0008', time)
         self.refresh()
