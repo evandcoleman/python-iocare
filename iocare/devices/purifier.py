@@ -21,7 +21,6 @@ class Purifier(object):
         self.is_light_on = control_status['0007'] == '2'
         self.timer = control_status['offTimerData']
         self.timer_remaining = control_status['0008']
-        self.is_timer_on = control_status['0008'] > '0'
         filters, quality, iaq = self.api.quality_status(self)
         fs = []
         for f in filters:
