@@ -46,7 +46,7 @@ class Purifier(object):
                 self.quality['volatile_organic_compounds'] = q['vocs']
                 self.quality['air_quality_index'] = q['inairquality']
         except KeyError as e:
-            print(e)
+            return e
 
     def set_power(self, on):
         self.is_on = on
